@@ -28,7 +28,10 @@ app.use(session({
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 922f8eeee89f4a0ce6b55b4a7eb3b934cc40d8d4
 /////////////routes????//////
 app.get('/app', (req, res)=>{
     //test if user has logged in
@@ -42,7 +45,11 @@ app.get('/app', (req, res)=>{
           message:'not logged in'
         });
     }
+<<<<<<< HEAD
 })
+=======
+});
+>>>>>>> 922f8eeee89f4a0ce6b55b4a7eb3b934cc40d8d4
 
 /************
  * Database *
