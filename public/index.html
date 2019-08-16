@@ -23,6 +23,7 @@
                 <!-- <input type="text" ng-model="auth.confirmPassword" placeholder="confirm password"> -->
                 <input type="submit" value="Create User"/>
             </form>
+          </div>
             <!-- LOGOUT -->
             <form ng-submit="auth.logOut()">
                 <input type="submit" value="Log Out">
@@ -30,8 +31,8 @@
         </nav>
         <h1>Trusty Townies</h1>
 
-      <div ng-if="auth.loggedInUsername">
-            Search Cities,{{auth.loggedInUsername}}
+        <div ng-if="auth.loggedInUsername">
+              Search Cities,{{auth.loggedInUsername}}
 
         </div>
 

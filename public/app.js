@@ -62,6 +62,8 @@ app.controller('AuthController', ['$http', function($http){
         );
     };
 
+    // this.loggedInUsername = null
+
     this.goApp = function(){
         console.log('getting user info');
         $http({

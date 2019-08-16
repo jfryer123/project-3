@@ -23,7 +23,7 @@ router.post('/', (req, res)=>{
             res.status(201).json({
               status:201,
               message:'session created'
-            });
+            }); 
         } else {
             //if the passwords don't match, tell the user
             // res.send('wrong password');
