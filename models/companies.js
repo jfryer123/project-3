@@ -10,6 +10,6 @@ const companiesSchema = Schema({
 	meta: { endorsements:Number, faves:Number }
 });
 
-const Companies = mongoose.model('Companies', companiesSchema);
+const Townies = mongoose.model('Townies', companiesSchema);
 
-module.exports = Companies;
+module.exports = Townies;

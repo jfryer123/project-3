@@ -9,6 +9,8 @@ require('dotenv').config();
 const app = express();
 const PORT = 3000;
 
+console.log(process.env.MONGODB_URI);
+
 const db = mongoose.connection;
 /**************
  * Middleware *
@@ -36,10 +38,10 @@ db.on('connected', () => console.log('mongo connected:'));
  * Controllers *
  *             *
  ***************/
-const userController = require("./controllers/business.js");
-app.use("/business", userController);
+const businessController = require("./controllers/business.js");
+app.use("/business", businessController);
 
-const sessionController = require("./controllers/sessions-users.js");
+const sessionController = require("./controllers/sessions.js");
 app.use("/sessions", sessionController);
 
 /************
