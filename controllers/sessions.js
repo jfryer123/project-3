@@ -1,6 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/users.js');
+<<<<<<< HEAD
+=======
+require('dotenv').config();
+
+>>>>>>> b7e522f39808f59fc4283e8fb18ac5c8ecfc3754
 const bcrypt = require('bcrypt');
 
 router.delete('/', (req, res)=>{
