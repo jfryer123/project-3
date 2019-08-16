@@ -22,9 +22,6 @@ app.controller('AuthController', ['$http', function($http){
     };
 
     this.logIn = function(){
-        console.log("hi");
-        console.log(this.username);
-        console.log(this.password);
         $http({
             method:'POST',
             url:'/sessions',
@@ -37,7 +34,7 @@ app.controller('AuthController', ['$http', function($http){
                 console.log(response);
                 controller.username = null;
                 controller.password = null;
-                controller.goApp();
+                // controller.goApp();
             },
             function(error){
                 console.log(error);
@@ -60,18 +57,18 @@ app.controller('AuthController', ['$http', function($http){
         );
     };
 
-    this.goApp = function(){
-        console.log('getting user info');
-        $http({
-            method:'GET',
-            url:'/app'
-        }).then(
-            function(response){
-                controller.loggedInUsername = response.data.username;
-            },
-            function(error){
-                console.log(error);
-            }
-        );
-    };
+    // this.goApp = function(){
+    //     console.log('getting user info');
+    //     $http({
+    //         method:'GET',
+    //         url:'/app'
+    //     }).then(
+    //         function(response){
+    //             controller.loggedInUsername = response.data.username;
+    //         },
+    //         function(error){
+    //             console.log(error);
+    //         }
+    //     );
+    // };
     }]);
