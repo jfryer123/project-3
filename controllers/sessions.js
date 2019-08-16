@@ -3,12 +3,6 @@ const router = express.Router();
 const User = require('../models/users.js');
 require('dotenv').config();
 
-
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 8be4355012c5ff513e612ce389d4b5886b4884d1
 const bcrypt = require('bcrypt');
 
 router.delete('/', (req, res)=>{
