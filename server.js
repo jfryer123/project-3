@@ -42,11 +42,9 @@ app.get('/app', (req, res)=>{
           message:'not logged in'
         });
     }
-<<<<<<< HEAD
+
 })
-=======
-});
->>>>>>> 922f8eeee89f4a0ce6b55b4a7eb3b934cc40d8d4
+
 
 /************
  * Database *
