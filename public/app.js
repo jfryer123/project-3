@@ -103,5 +103,6 @@ app.controller('AuthController', ['$http', function($http){
 			this.companies = res.data;
 		});
 	}
+
 	this.getTownies();
     }]);
