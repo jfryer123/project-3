@@ -102,9 +102,20 @@ app.controller('AuthController', ['$http', function($http){
 	this.getTownies();
     }]);
 
+<<<<<<< HEAD
 $scope.search = function(item) {
     if (!$scope.query || (item.brand.toLowerCase().indexOf($scope.query) != -1) || (item.model.toLowerCase().indexOf($scope.query.toLowerCase()) != -1) ){
         return true;
     }
     return false;
 };
+=======
+}]);
+/**
+ * <h4>Know a Townie you Trust?<br>
+	 <span ng-click="showNewTownieForm">Add them here:</span>
+	 </h4>
+
+	 <input type="submit" value="Create New Townie"/>
+ */
+>>>>>>> f61956f26835482d54d47f9ce3e2dc0729698fb9
