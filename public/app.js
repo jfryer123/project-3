@@ -1,31 +1,21 @@
 const app = angular.module('MyApp', []);
-
-app.controller('AppController', ['$http', function($http, SharedValues){
+app.controller('AuthController', ['$http', function($http){
     const controller = this;
-	// this.isActiveUser = () => {
-	// 	if (loggedInUsername) {
-	// 		return true
-	// 	}else {
-	// 		return false
-	// 	}
-	// }
-	/********************************
-	 * AUTHORIZATION/NAV FUNCTIONS  *
-	 *                              *
-	 ********************************/
-	this.createUser = function(){
+    this.createUser = function(){
+      console.log("1" + this.username);
+      console.log("2" + this.password);
         $http({
             method:'POST',
             url:'/sessions/newuser',
             data:{
-                username:this.newUsername,
-                password:this.newPassword
+                username:this.username,
+                password:this.password
             }
         }).then(
             function(response){
-                controller.newUsername = null;
-                controller.newPassword = null;
-				console.log(response);
+                controller.username = null;
+                controller.password = null;
+                console.log(response);
             },
             function(error){
                 console.log(error);
@@ -43,7 +33,7 @@ app.controller('AppController', ['$http', function($http, SharedValues){
             }
         }).then(
             function(response){
-                console.log("Log In Response:",response.data);
+                console.log("thisiansf" + response);
                 controller.username = null;
                 controller.password = null;
                 controller.goApp();
@@ -76,9 +66,7 @@ app.controller('AppController', ['$http', function($http, SharedValues){
             url:'/app'
         }).then(
             function(response){
-				console.log("Username:", response.data.username);
-				controller.loggedInUsername = response.data.username;
-				console.log("loggedInUsername:", controller.loggedInUsername);
+                controller.loggedInUsername = response.data.username;
             },
             function(error){
                 console.log(error);
@@ -86,10 +74,6 @@ app.controller('AppController', ['$http', function($http, SharedValues){
         );
     };
 
-	/************************************
-	 *     COMPANY/TOWNIE FUNCTIONS     *
-	 *                                  *
-	 ************************************/
 	this.createTownie = () => {
 		console.log(this.name);
 		$http({
@@ -97,19 +81,11 @@ app.controller('AppController', ['$http', function($http, SharedValues){
 			url:'/business',
 			data:{
 				name: this.name,
-				streetAddress: this.streetAddress,
 				city: this.city,
 				state: this.state,
-				zipcode: this.zipcode,
 				description: this.description
 			}
 		}).then(() => {
-			this.name = null;
-			this.streetAddress = null;
-			this.city = null;
-			this.state = null;
-			this.zipcode = null;
-			this.description = null;
 			this.getTownies()
 		})
 	}
@@ -120,31 +96,15 @@ app.controller('AppController', ['$http', function($http, SharedValues){
 			url:"/business"
 		}).then((res) => {
 			this.companies = res.data;
-			console.log(this.companies);
-			this.allStatesList = () => {
-				const statesList = []
-				for (let i = 0; i < this.companies.length; i++) {
-					statesList.push(this.companies[i].state);
-				}
-				const sortedStatesList = statesList.sort()
-				const filteredStatesList = []
-				for (var i = 0; i < sortedStatesList.length; i++) {
-					if (sortedStatesList[i] != sortedStatesList[i+1]) {
-						filteredStatesList.push(sortedStatesList[i])
-					}
-				}
-				return filteredStatesList
-			}
 		});
 	}
-	this.getTownies()
-	this.showmap = false;
-	this.selectCompany = (company) => {
-		this.companyAddress = company.streetAddress + ", " + company.city + ", " + company.state + " " + company.zipcode
-		console.log(this.companyAddress);
-		this.showMap = true;
-	}
 
+	this.getTownies();
+    }]);
 
-
-}]);
+$scope.search = function(item) {
+    if (!$scope.query || (item.brand.toLowerCase().indexOf($scope.query) != -1) || (item.model.toLowerCase().indexOf($scope.query.toLowerCase()) != -1) ){
+        return true;
+    }
+    return false;
+};
